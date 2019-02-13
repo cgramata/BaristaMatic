@@ -34,13 +34,16 @@ public class BaristaMatic extends ArrayIndexOutOfBoundsException{
     public void printMenu(Inventory inventoryObject, List<Drink> drinkMenu) {
         System.out.println("Menu:");
         for (int i = 1; i <= drinkMenu.size(); i++) {                  
-            System.out.println(i + "," + drinkMenu.get(i-1).getDrinkName() + ",$" + 
-                drinkMenu.get(i-1).getDrinkPrice() + "," + 
-                inventoryObject.checkAvailability(drinkMenu.get(i-1).getDrinkRecipe()));
+            System.out.println(
+                    i + "," + drinkMenu.get(i-1).getDrinkName() + 
+                    ",$" + drinkMenu.get(i-1).getDrinkPrice() + "," + 
+                    inventoryObject.checkAvailability(drinkMenu.get(i-1).getDrinkRecipe()));
         }
     }
     
     /**
+     * The main method of BaristaMatic
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
