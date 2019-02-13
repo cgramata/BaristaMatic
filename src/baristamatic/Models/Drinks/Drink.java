@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public abstract class Drink implements Comparable<Drink>{
     /**
-     * drinkName   represents the subclass drink name
-     * drinkPrice  represents the subclass drink price
+     * drinkName   represents the drink name
+     * drinkPrice  represents the drink price
      * roundToTwo  rounds a Double to two decimal places
      * drinkRecipe a map, Key ingredient, Value amount of ingredient
      */
