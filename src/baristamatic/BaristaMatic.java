@@ -97,7 +97,7 @@ public class BaristaMatic extends ArrayIndexOutOfBoundsException{
                         inventoryObject.printInventory();
                         baristaMaticObject.printMenu(inventoryObject, drinkMenu);
                     } 
-                break;
+                    break;
             }
         }
     }
