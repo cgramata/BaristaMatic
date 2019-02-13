@@ -26,7 +26,7 @@ public abstract class Drink implements Comparable<Drink>{
     String drinkName; 
     Double drinkPrice;
     DecimalFormat roundToTwo = new DecimalFormat(".00");
-    Map<Ingredient, Integer> drinkRecipe = new HashMap<Ingredient, Integer>();
+    Map<Ingredient, Integer> drinkRecipe = new HashMap<>();
     
     /**
      * The Drink class constructor.
@@ -69,7 +69,9 @@ public abstract class Drink implements Comparable<Drink>{
     }
     
     /**
-     * Overridden method to sort the Drink class
+     * Overridden method to sort the Drink class by name
+     * 
+     * @param drink takes in Drink type parameter 
      */
     @Override 
     public int compareTo(Drink drink) {

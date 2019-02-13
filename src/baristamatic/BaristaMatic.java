@@ -64,34 +64,39 @@ public class BaristaMatic extends ArrayIndexOutOfBoundsException{
         
         Scanner scan = new Scanner(System.in);
         
+        OUTER:
         while (true) {
             String input = scan.next().toLowerCase();
-           
-            if (input.equals("r")) {
-                inventoryObject.restockInventory();
-                inventoryObject.printInventory();
-                baristaMaticObject.printMenu(inventoryObject, drinkMenu);
-            } else if( input.equals("q")) {
+            switch (input) {
+                case "r":
+                    inventoryObject.restockInventory();
+                    inventoryObject.printInventory();
+                    baristaMaticObject.printMenu(inventoryObject, drinkMenu);
+                    break;
+                case "q":
+                    break OUTER;
+                default:
+                    try {
+                        Integer orderInput = Integer.parseInt(input);
+                        String name = drinkMenu.get(orderInput - 1).getDrinkName();
+                        Map<Ingredient, Integer> recipe = drinkMenu.get(orderInput - 1).getDrinkRecipe();
+                        
+                        if (inventoryObject.checkAvailability(recipe)) {
+                            inventoryObject.updateInventory(recipe);
+                            System.out.printf("Dispensing: %s\n", name);
+                            inventoryObject.printInventory();
+                            baristaMaticObject.printMenu(inventoryObject, drinkMenu);
+                        } else {
+                            System.out.printf("Out of stock: %s\n", name);
+                            inventoryObject.printInventory();
+                            baristaMaticObject.printMenu(inventoryObject, drinkMenu);
+                        }
+                    } catch (IndexOutOfBoundsException | NumberFormatException exception) {
+                        System.out.printf("Invalid selection: %s\n",input);
+                        inventoryObject.printInventory();
+                        baristaMaticObject.printMenu(inventoryObject, drinkMenu);
+                    } 
                 break;
-            } else try {
-                Integer orderInput = Integer.parseInt(input);
-                String name = drinkMenu.get(orderInput - 1).getDrinkName();
-                Map<Ingredient, Integer> recipe = drinkMenu.get(orderInput - 1).getDrinkRecipe();
-                
-                if (inventoryObject.checkAvailability(recipe)) {
-                    inventoryObject.updateInventory(recipe);
-                    System.out.printf("Dispensing: %s\n", name);
-                    inventoryObject.printInventory();
-                    baristaMaticObject.printMenu(inventoryObject, drinkMenu);
-                } else {
-                    System.out.printf("Out of stock: %s\n", name);
-                    inventoryObject.printInventory();
-                    baristaMaticObject.printMenu(inventoryObject, drinkMenu);
-                }
-            } catch (IndexOutOfBoundsException | NumberFormatException exception) {
-                System.out.printf("Invalid selection: %s\n",input);
-                inventoryObject.printInventory();
-                baristaMaticObject.printMenu(inventoryObject, drinkMenu);
             }
         }
     }
