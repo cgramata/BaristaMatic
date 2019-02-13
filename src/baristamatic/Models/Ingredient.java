@@ -29,14 +29,14 @@ public enum Ingredient {
     }
     
     /**
-     * returns the ingredient name
+     * @return the ingredient name
      */
     public String getIngredientName() {
         return ingredientName;
     }
     
     /**
-     * returns the ingredient price
+     * @return the ingredient price
      */
     public Double getIngredientPrice() {
         return ingredientPrice;

@@ -61,7 +61,7 @@ public class Inventory {
      * Used to see if a drink can be made with the available inventory.
      * 
      * @param drinkRecipe a map, Key ingredient, Value amount
-     * @return            a boolean whether a drink is possible to make
+     * @return            a boolean to notify whether a drink is available to make
      */
     public boolean checkAvailability(Map<Ingredient, Integer> drinkRecipe) {
         for (Ingredient ingredient : drinkRecipe.keySet()) {
