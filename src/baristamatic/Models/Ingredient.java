@@ -6,10 +6,15 @@
 package baristamatic.Models;
 
 /**
- *
+ *Holds the ingredient pricing, which stays constant
+ * 
  * @author carlgramata
+ * @since 11Feb2019
  */
 public enum Ingredient {
+    /**
+     * Creates the constant pricing and names
+     */
     COCOA("Cocoa",.90),
     COFFEE("Coffee",.75),
     CREAM("Cream",.25),
@@ -23,16 +28,24 @@ public enum Ingredient {
     private final String ingredientName;
     private final Double ingredientPrice;
    
-    
+    /**
+     * Constructor
+     */
     Ingredient(String ingredientName, Double ingredientPrice) {
         this.ingredientName = ingredientName;
         this.ingredientPrice = ingredientPrice;
     }
     
+    /**
+     * returns the ingredient name
+     */
     public String getIngredientName() {
         return ingredientName;
     }
     
+    /**
+     * returns the ingredient price
+     */
     public Double getIngredientPrice() {
         return ingredientPrice;
     }
