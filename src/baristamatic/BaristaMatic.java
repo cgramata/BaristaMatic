@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package baristamatic;
 
 import baristamatic.Models.Drinks.Drink;
@@ -21,14 +16,24 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- *
+ *Contains the main method which handles the user input and utilizes the drink objects
+ * 
  * @author carlgramata
+ * @since 11Feb2019
  */
 public class BaristaMatic extends ArrayIndexOutOfBoundsException{
 
+    /**
+     * Prints out the drink menu and the specified fields
+     * 
+     * The format is as specified: "1,Drink Name,$price,availability"
+     * 
+     * @param inventoryObject Inventory object 
+     * @param drinkMenu       Array of Drink subclass objects
+     */
     public void printMenu(Inventory inventoryObject, List<Drink> drinkMenu) {
         System.out.println("Menu:");
-        for (int i = 1; i <= drinkMenu.size(); i++) {
+        for (int i = 1; i <= drinkMenu.size(); i++) {                  
             System.out.println(i + "," + drinkMenu.get(i-1).getDrinkName() + ",$" + 
                 drinkMenu.get(i-1).getDrinkPrice() + "," + 
                 inventoryObject.checkAvailability(drinkMenu.get(i-1).getDrinkRecipe()));
@@ -40,12 +45,10 @@ public class BaristaMatic extends ArrayIndexOutOfBoundsException{
      */
     public static void main(String[] args) {
         
-        //Stocks the inventory first
-        Inventory inventoryObject = new Inventory();
+        Inventory inventoryObject = new Inventory();                   //Stocks the inventory first
         inventoryObject.restockInventory();
         
-        //Instantiate the drink objects
-        List<Drink> drinkMenu = new ArrayList<>(Arrays.asList(
+        List<Drink> drinkMenu = new ArrayList<>(Arrays.asList(         //Instantiate the drink objects
                 new DecafCoffee(),
                 new CaffeLatte(),
                 new Cappuccino(),
@@ -55,17 +58,15 @@ public class BaristaMatic extends ArrayIndexOutOfBoundsException{
                 ));
         Collections.sort(drinkMenu);
         
-        //Instantiate the BaristaMatic object
-        BaristaMatic baristaMaticObject = new BaristaMatic();
+        BaristaMatic baristaMaticObject = new BaristaMatic();           //Instantiate the BaristaMatic object
         
-        //prints out the inventory and EVENTUALLY the menu as specified
-        inventoryObject.printInventory();
+        inventoryObject.printInventory();                               //Prints out the inventory and the menu as specified
         baristaMaticObject.printMenu(inventoryObject, drinkMenu);
         
         Scanner scan = new Scanner(System.in);
         
         OUTER:
-        while (true) {
+        while (true) {                                                  //Handles the user input
             String input = scan.next().toLowerCase();
             switch (input) {
                 case "r":

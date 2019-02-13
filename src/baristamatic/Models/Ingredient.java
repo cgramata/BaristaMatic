@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package baristamatic.Models;
 
 /**
- *Holds the ingredient pricing, which stays constant
+ * Holds the ingredient name and pricing, which stays constant
  * 
  * @author carlgramata
  * @since 11Feb2019
@@ -28,9 +23,6 @@ public enum Ingredient {
     private final String ingredientName;
     private final Double ingredientPrice;
    
-    /**
-     * Constructor
-     */
     Ingredient(String ingredientName, Double ingredientPrice) {
         this.ingredientName = ingredientName;
         this.ingredientPrice = ingredientPrice;
